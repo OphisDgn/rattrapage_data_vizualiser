@@ -6,6 +6,15 @@
   <router-view/>
 </template>
 
+<script>
+export default {
+  name: 'App',
+  created(){
+    this.$store.dispatch('retrievePeople')
+  }
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -22,6 +31,7 @@
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
 }
 
 #nav a.router-link-exact-active {

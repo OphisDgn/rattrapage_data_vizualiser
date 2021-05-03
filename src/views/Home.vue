@@ -1,20 +1,26 @@
 <template>
   <div class="home">
+    <Filter />
     <Datas/>
+
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import Datas from '@/components/Datas.vue'
+import Filter from '@/components/Filter.vue'
 
 export default {
   name: 'Home',
   components: {
-    Datas
+    Datas,
+    Filter
   },
   computed: {
-    ...mapState(['people'])
+
+    ...mapState(['people']),
+    ...mapGetters(['filteredData'])
   }
 }
 </script>

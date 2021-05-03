@@ -17,6 +17,9 @@ export default {
   },
   computed: {
     ...mapState(['people'])
-  }
+  },
+  // created(){
+  //   this.$store.dispatch('retrievePeople')
+  // }
 }
 </script>
