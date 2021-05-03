@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <h1>bienvenue!</h1>
     <Page />
   </div>
 </template>
