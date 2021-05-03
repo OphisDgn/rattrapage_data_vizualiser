@@ -1,15 +1,17 @@
 <template>
-  <div class="datas">
-    <h1>hello DAtas</h1>
+  <div class="chart">
+    <h1>hello grahp</h1>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'Datas'
+  name: 'Page',
+  components: {
+  }
 }
 </script>
 
 <style scoped>
-
 </style>

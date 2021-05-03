@@ -1,22 +1,10 @@
 <template>
-  <div id="app">
-    <Page />
+  <div id="nav">
+    <router-link to="/">Liste</router-link> |
+    <router-link to="/graph">Graphique</router-link>
   </div>
+  <router-view/>
 </template>
-
-<script>
-import Page from './components/Page.vue'
-
-export default {
-  name: 'App',
-  components: {
-    Page
-  },
-  created() {
-    this.$store.dispatch('retrievePeople');
-  }
-}
-</script>
 
 <style>
 #app {
@@ -25,6 +13,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
