@@ -70,6 +70,7 @@ export default {
 }
 .tablePeople td {
   border-bottom: 1px solid #cecece;
+  padding: 10px;
 }
 .tablePeople th {
   border-bottom: 1px solid #4b3e3e;

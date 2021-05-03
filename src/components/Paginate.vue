@@ -2,15 +2,13 @@
   <div class="paginate">
     <ul>
       <li v-for="(p, index) in pages" :key="index" @click="changePage(index)" :class="{active: index === currentPage}">
-        {{index+1}}
+        {{ index + 1 }}
       </li>
     </ul>
-
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'Paginate',
   props: {
