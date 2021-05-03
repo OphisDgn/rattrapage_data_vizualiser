@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Filter />
-    <Datas/>
+    <Datas :data="filteredData"/>
 
   </div>
 </template>

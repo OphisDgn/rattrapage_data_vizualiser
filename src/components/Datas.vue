@@ -1,21 +1,21 @@
 <template>
   <div class="datas">
-    <h1>hello DAtas</h1>
-
-    <table>
+    <br/>
+    <table class="tablePeople">
       <thead>
         <th>Nom Prénom</th>
-        <th>Adresse </th>
-        <th></th>
-        <th></th>
+        <th>Genre</th>
+        <th>Adresse</th>
+        <th>Animal préféré</th>
+        <th>Film préféré</th>
       </thead>
       <tbody>
         <tr v-for="people in paginateData" :key="people.id">
           <td>{{ people.lastname + ' ' + people.firstname }}</td>
           <td>{{ people.gender }}</td>
-          <td>{{ people.contact.address }}</td>
-          <td>{{  }}</td>
-          <td>{{  }}</td>
+          <td>{{ people.contact.address + ' \n - ' + people.contact.city + ', ' + people.contact.country  }}</td>
+          <td>{{ people.preferences.favorite_pet }}</td>
+          <td>{{ people.preferences.favorite_movie }}</td>
           <td>{{  }}</td>
         </tr>
       </tbody>
@@ -56,7 +56,7 @@ export default {
       return this.data.length;
     },
     paginateData() {
-      return this.data.slice(this.pageOffset, this.pageOffset+parseInt(this.pageSize))
+      return this.data.slice(this.pageOffset, this.pageOffset + parseInt(this.pageSize))
     }
   }
 }
@@ -64,4 +64,14 @@ export default {
 
 <style scoped>
 
+.tablePeople {
+  margin-left: auto;
+  margin-right: auto;
+}
+.tablePeople td {
+  border-bottom: 1px solid #cecece;
+}
+.tablePeople th {
+  border-bottom: 1px solid #4b3e3e;
+}
 </style>

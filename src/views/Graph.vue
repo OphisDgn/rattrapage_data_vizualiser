@@ -1,13 +1,12 @@
 <template>
   <div class="graph">
-    <h1>Graphique</h1>
-    <Chart />
+    <Chart :data="filteredData"/>
   </div>
 </template>
 
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import Chart from '@/components/Chart.vue'
 
 export default {
@@ -16,10 +15,8 @@ export default {
     Chart
   },
   computed: {
-    ...mapState(['people'])
-  },
-  // created(){
-  //   this.$store.dispatch('retrievePeople')
-  // }
+    ...mapState(['people']),
+    ...mapGetters(['filteredData'])
+  }
 }
 </script>

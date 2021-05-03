@@ -11,7 +11,7 @@ export default createStore({
         filteredData(state) {
             return state.people
                 .filter((people) => !state.filterCol || !state.filterValue || people.preferences[state.filterCol] === state.filterValue)
-                .filter((people) => objecttToString(people).toLowerCase().includes(state.search.toLowerCase()))
+                .filter((people) => objecttToString(people).toLowerCase().includes(state.search.toLowerCase()));
         }
     },
     mutations: {
@@ -32,15 +32,15 @@ export default createStore({
                 .then(res => res.json())
                 .then(json => store.commit('setDatas', json.people))
         },
-        searchUpdate(state, value) {
-            store.commit('setSearch', value);
-        },
-        filterUpdate(state, value) {
-            store.commit('setFilter', value);
-        },
-        resetFilter(state, value) {
-            store.commit('setFilter', { column: null, value: null })
-        }
+        // searchUpdate(state, value) {
+        //     store.commit('setSearch', value);
+        // },
+        // filterUpdate(state, value) {
+        //     store.commit('setFilter', value);
+        // },
+        // resetFilter(state, value) {
+        //     store.commit('setFilter', { column: null, value: null })
+        // }
     }
 })
 

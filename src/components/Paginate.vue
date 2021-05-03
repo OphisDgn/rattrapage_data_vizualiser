@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination">
+  <div class="paginate">
     <ul>
       <li v-for="(p, index) in pages" :key="index" @click="changePage(index)" :class="{active: index === currentPage}">
         {{index+1}}
@@ -36,23 +36,21 @@ export default {
 </script>
 
 <style scoped>
-
 ul{
   list-style: none;
 }
 ul li {
   padding: 10px;
   border-radius: 10px;
-  float:left;
+  display: inline-block;
   margin: 10px;
   cursor: pointer;
 }
 ul li:hover{
-  background-color: lightgray;
+  background-color: #75534d3d;
 }
 ul li.active{
-  background-color: gray;
+  background-color: #75534da1;
+  color: white;
 }
-
-
 </style>
