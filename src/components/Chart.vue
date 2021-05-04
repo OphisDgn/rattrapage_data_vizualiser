@@ -1,30 +1,35 @@
 <template>
   <div class="chart">
-    <h1>hello graph</h1>
+    <h1>Quelques graphiques</h1>
     <div class="group-form">
       <div class="chartAnimal chartjs">
-        <PieChart title="Animaux" :labels="pets.labels" :data="pets.data" :options="{responsive: true}" />
+        <label for="Animaux">Les animaux préférés</label>
+        <TypeChart type="polarArea" title="Animaux" :labels="pets.labels" :data="pets.data" :options="{responsive: true}" />
       </div>
-      <!-- <div class="chartColor chartjs">
-        <PieChart title="Couleur" :labels="color.labels" :data="color.data" :options="{responsive:true}"/>
+      <div class="chartColor chartjs">
+        <label for="Animaux">Les couleurs préférés</label>
+        <TypeChart type="radar" title="Couleur" :labels="colors.labels" :data="colors.data" :options="{responsive:true}"/>
       </div>
-    </div>
-    <div class="group-form">
       <div class="chartFruit chartjs">
-        <PieChart title="Fruits" :labels="fruits.labels" :data="fruits.data" :options="{responsive:true}"/>
-      </div> -->
+        <label for="Animaux">Les fruits préférés</label>
+        <TypeChart type="doughnut" title="Fruits" :labels="fruits.labels" :data="fruits.data" :options="{responsive:true}"/>
+      </div>
+      <div class="chartCountry chartjs">
+        <label for="Pays">Les pays</label>
+        <TypeChart type="doughnut" title="Pays" :labels="countries.labels" :data="countries.data" :options="{responsive:true}"/>
+      </div>
     </div>
     
   </div>
 </template>
 
 <script>
-import PieChart from '@/components/PieChart';
+import TypeChart from '@/components/TypeChart';
 
 export default {
   name: 'Chart',
   components: {
-    PieChart
+    TypeChart
   },
   props: {
     data: Array,
@@ -33,12 +38,15 @@ export default {
     pets(){
       return this.aggregateDataForColumn(this.data, 'preferences.favorite_pet');
     },
-    // fruits(){
-    //   return this.aggregateDataForColumn(this.data, 'preferences.favorite_fruit');
-    // },
-    // colors(){
-    //   return this.aggregateDataForColumn(this.data, 'preferences.favorite_color');
-    // },
+    fruits(){
+      return this.aggregateDataForColumn(this.data, 'preferences.favorite_fruit');
+    },
+    colors(){
+      return this.aggregateDataForColumn(this.data, 'preferences.favorite_color');
+    },
+    countries(){
+      return this.aggregateDataForColumn(this.data, 'contact.country');
+    }
   },
   methods:{
     aggregateDataForColumn(data, column){
@@ -63,8 +71,7 @@ export default {
 </script>
 
 <style>
-/* .chartjs {
-  width: 200px;
-  height: 300px;
-} */
+.chartjs {
+  margin: 30px 0px;
+}
 </style>

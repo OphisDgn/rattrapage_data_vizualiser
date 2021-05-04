@@ -7,26 +7,26 @@
 import Chart from 'chart.js';
 
 const backgroundColor = [
-  'rgba(28, 22, 23, 0.3)',
-  'rgba(54, 162, 235, 0.3)',
+  'rgba(253, 193, 181, 0.3)',
+  'rgba(134, 58, 234, 0.3)',
   'rgba(255, 206, 86, 0.3)',
   'rgba(75, 192, 192, 0.3)',
-  'rgba(153, 102, 255, 0.3)',
-  'rgba(255, 159, 64, 0.3)'
+  'rgba(113, 102, 255, 0.3)',
+  'rgba(245, 78, 27, 0.3)'
 ]
 
 const borderColor = [
-  'rgba(255, 99, 132, 1)',
-  'rgba(54, 162, 235, 1)',
+  'rgba(253, 193, 181, 1)',
+  'rgba(134, 58, 234, 1)',
   'rgba(255, 206, 86, 1)',
   'rgba(75, 192, 192, 1)',
-  'rgba(153, 102, 255, 1)',
-  'rgba(255, 159, 64, 1)'
+  'rgba(113, 102, 255, 1)',
+  'rgba(245, 78, 27, 1)'
 ]
 
 export default {
-    name: 'PieChart',
-    props: ['data', 'labels', 'options', 'title'],
+    name: 'TypeChart',
+    props: ['data', 'labels', 'options', 'title', 'type'],
     data() {
         return {
             chart: null
@@ -48,16 +48,8 @@ export default {
                     this.chart.destroy();
                 }
                 if (this.data) {
-                    console.log(this.labels);
-                    console.log('____');
-                    console.log(this.options);
-                    console.log('____');
-                    console.log(this.data);
-                    console.log('____');
-                    console.log(this.title);
-                    console.log('____');
                     this.chart = new Chart(self, {
-                        type: 'doughnut',
+                        type: this.type,
                         data: {
                             labels: this.labels,
                             datasets: [{
@@ -69,7 +61,6 @@ export default {
                         },
                         options: {}
                     });
-                    console.log(this.chart);
                 }
             }
             catch(e) {
