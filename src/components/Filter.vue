@@ -1,23 +1,25 @@
 <template>
-  <div>
-    <input type="text" v-model="search" />
-
-
-    <label for="column">favorite</label>
-    <select name="column" v-model="column">
-      <option value="favorite_fruit">Fruit</option>
-      <option value="favorite_color">Color</option>
-      <option value="favorite_pet">Pet</option>
-    </select>
-
-    <label for="value">equal</label>
-    <select name="value" v-model="value">
-      <option v-for="opt in options[column]" :key="opt">{{opt}}</option>
-    </select>
-
-    <button @click="resetFilter">Reset Filters</button>
-
-  </div>
+    <div class="filter">
+        <div class="group-form inputSearch">
+            <label for="searchStr">Rechercher </label>
+            <input name="searchStr" type= "text" v-model="searchStr"/>
+        </div>
+        <div class="group-form">
+            <label for="column">Chercher par la colonne </label>
+            <select name="column" v-model="column">
+                <option value="favorite_fruit">Fruit</option>
+                <option value="favorite_color">Couleur</option>
+                <option value="favorite_pet">Animal</option>
+            </select>
+            
+            <label for="value">Avec la valeur </label>
+            <select name="value" v-model="value">
+                <option v-for="val in options[column]" :key="val">{{ val }}</option>
+            </select>
+            <br/>
+            <button @click="resetFilter">Annuler les filtres</button>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -26,7 +28,7 @@ export default {
   name: 'Filter',
   data(){
     return {
-      search: '',
+      searchStr: '',
       column: null,
       value: null,
       options: {
@@ -37,16 +39,16 @@ export default {
     }
   },
   watch:{
-    searchString(value){
-      this.$store.dispatch('searchUpdate', value)
+    searchString(value) {
+      this.$store.dispatch('searchStrUpdate', value);
     },
-    value(value){
-      this.$store.dispatch('filterUpdate', {column:this.column, value:value})
+    value(value) {
+      this.$store.dispatch('filterUpdate', { column: this.column, value: value });
     },
   },
   methods:{
-    resetFilter(){
-      this.search = '';
+    resetFilter() {
+      this.searchStr = '';
       this.$store.dispatch('resetFilter')
     },
   }
@@ -54,5 +56,16 @@ export default {
 </script>
 
 <style scoped>
+.filter {
+    text-align: left;
+}
+.group-form {
+    display: inline-block;
+    width: 40%;
+}
+.inputSearch {
+    padding-right: 50px;
+    text-align: right;
+}
 
 </style>

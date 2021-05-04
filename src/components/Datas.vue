@@ -3,20 +3,21 @@
     <br/>
     <table class="tablePeople">
       <thead>
-        <th>Nom Prénom</th>
+        <th>Nom prénom</th>
         <th>Genre</th>
         <th>Adresse</th>
-        <th>Animal préféré</th>
-        <th>Film préféré</th>
+        <th>Animal</th>
+        <th>Couleur</th>
+        <th>Fruit</th>
       </thead>
       <tbody>
         <tr v-for="people in paginateData" :key="people.id">
           <td>{{ people.lastname + ' ' + people.firstname }}</td>
           <td>{{ people.gender }}</td>
-          <td>{{ people.contact.address + ' \n - ' + people.contact.city + ', ' + people.contact.country  }}</td>
+          <td>{{ people.contact.address + ' \n - ' + people.contact.city + ', ' + people.contact.country }}</td>
           <td>{{ people.preferences.favorite_pet }}</td>
-          <td>{{ people.preferences.favorite_movie }}</td>
-          <td>{{  }}</td>
+          <td>{{ people.preferences.favorite_color }}</td>
+          <td>{{ people.preferences.favorite_fruit }}</td>
         </tr>
       </tbody>
     </table>
@@ -67,6 +68,7 @@ export default {
 .tablePeople {
   margin-left: auto;
   margin-right: auto;
+  text-align: left;
 }
 .tablePeople td {
   border-bottom: 1px solid #cecece;
