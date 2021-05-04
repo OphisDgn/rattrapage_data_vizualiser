@@ -15,6 +15,7 @@ export default {
     Chart
   },
   computed: {
+    
     ...mapState(['people']),
     ...mapGetters(['filteredData'])
   }

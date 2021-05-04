@@ -2,7 +2,7 @@
     <div class="filter">
         <div class="group-form inputSearch">
             <label for="searchStr">Rechercher </label>
-            <input name="searchStr" type= "text" v-model="searchStr"/>
+            <input name="searchStr" type= "text" v-model="searchStr" />
         </div>
         <div class="group-form">
             <label for="column">Chercher par la colonne </label>
