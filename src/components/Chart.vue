@@ -1,6 +1,6 @@
 <template>
   <div class="chart">
-    <h1>Quelques graphiques</h1>
+    <h1>Quelques graphiques des gens</h1>
     <div class="group-form">
       <div class="chartAnimal chartjs">
         <label for="Animaux">Les animaux préférés</label>

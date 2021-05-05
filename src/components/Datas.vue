@@ -1,5 +1,6 @@
 <template>
   <div class="datas">
+    <h1>La liste des gens</h1>
     <br/>
     <table class="tablePeople">
       <thead>
@@ -26,7 +27,7 @@
 
     <Paginate :limit="pageSize" :offset="pageOffset" :total="totalData" @pageChanged="pageOffset = parseInt($event)"/>
 
-    <select v-model="pageSize">
+    <select class="select-form" v-model="pageSize">
       <option value="10">10</option>
       <option value="25">25</option>
       <option value="50">50</option>
@@ -34,6 +35,13 @@
       <option value="100">100</option>
     </select>
 
+  <br/>
+
+  <div class="download">
+    <h3>Souhaitez-vous conserver les données que vous venez de voir ?</h3>
+    <p>Alors n'attendez plus ! Télécharger sous format JSON avec le bouton ci-après</p>
+    <button class="btnDownload" @click="downloadJson">Ce bouton là</button>
+  </div>
   </div>
 </template>
 
@@ -61,6 +69,19 @@ export default {
     paginateData() {
       return this.data.slice(this.pageOffset, this.pageOffset + parseInt(this.pageSize))
     }
+  },
+  methods: {
+    createBlob(content, fileName, contentType) {
+      const data = document.createElement('a');
+      const fileBlob = new Blob([content], { type: contentType });
+      data.href = URL.createObjectURL(fileBlob);
+      data.download = fileName;
+      data.click();
+    },
+    downloadJson() {
+      console.log('dans downloadJson');
+      this.createBlob(JSON.stringify(this.data), "people.json", "text/plain");
+    }
   }
 }
 </script>
@@ -79,4 +100,38 @@ export default {
 .tablePeople th {
   border-bottom: 1px solid #4b3e3e;
 }
+.select-form {
+  width: 10%;
+  padding: .375rem 2.25rem .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 16px 12px;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.download {
+  text-align: left;
+}
+.btnDownload {
+  border: 1px solid #04AA6D;
+  color: green;
+  background-color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.btnDownload:hover {
+  background-color: #04AA6D;
+  color: white;
+}
+
 </style>
